@@ -1,8 +1,20 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+// import React, { useState, useEffect } from 'react'
 import React from 'react'
 import { Menu } from 'antd'
-import { AppstoreOutlined, PieChartOutlined, DesktopOutlined, ContainerOutlined, MailOutlined } from '@ant-design/icons'
+// import { Layout } from 'antd'
 
-const { SubMenu } = Menu
+import MenusList, { IFSubMenu, MenuBase } from '../../../routes/config'
+// import { AppstoreOutlined, PieChartOutlined, DesktopOutlined, ContainerOutlined, MailOutlined } from '@ant-design/icons'
+// import { PieChartOutlined } from '@ant-design/icons'
+// import MenusList from '../../../routes/config'
+// import { Link } from 'react-router-dom'
+// import Item from 'antd/lib/list/Item'
+
+// const { SubMenu } = Menu
+
+
+
 
 class SideBarItem extends React.Component{
 
@@ -10,49 +22,73 @@ class SideBarItem extends React.Component{
 		collapsed: false
 	}
 
-	toggleCollapsed = () => {
+	toggleCollapsed = (): void => {
 		this.setState({
 			collapsed: !this.state.collapsed
 		})
 	}
 
-	render() {
+	handleMenuClick = (item: IFSubMenu): void => {
+		console.log(item)
+	}
+
+	render(): JSX.Element {
 		return (
 			<div className="side-wrapper">
-				<Menu
-					defaultSelectedKeys={['1']}
-					defaultOpenKeys={['sub1']}
-					mode="inline"
-					theme="dark"
-					inlineCollapsed={this.state.collapsed}
-				>
-					<Menu.Item key="1" icon={<PieChartOutlined />}>
-						Option 1
-					</Menu.Item>
-					<Menu.Item key="2" icon={<DesktopOutlined />}>
-						Option 2
-					</Menu.Item>
-					<Menu.Item key="3" icon={<ContainerOutlined />}>
-						Option 3
-					</Menu.Item>
-					<SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-						<Menu.Item key="5">Option 5</Menu.Item>
-						<Menu.Item key="6">Option 6</Menu.Item>
-						<Menu.Item key="7">Option 7</Menu.Item>
-						<Menu.Item key="8">Option 8</Menu.Item>
-					</SubMenu>
-					<SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-						<Menu.Item key="9">Option 9</Menu.Item>
-						<Menu.Item key="10">Option 10</Menu.Item>
-						<SubMenu key="sub3" title="Submenu">
-							<Menu.Item key="11">Option 11</Menu.Item>
-							<Menu.Item key="12">Option 12</Menu.Item>
-						</SubMenu>
-					</SubMenu>
-				</Menu>
+				{MenusList.menus.map((item: IFSubMenu, index: number) => (
+					<Menu 
+						defaultSelectedKeys={['1']} 
+						defaultOpenKeys={['sub']} 
+						mode="inline"
+						theme="dark" 
+						key={index}
+					>
+						<>
+							{item.subs! ? renderSubMenu(item) : renderMenuItem(item)}
+						</>
+					</Menu>
+				))}
 			</div>
 		)
 	}
+}
+
+const renderMenuItem = (menuItem: MenuBase) => {
+	return (
+		<Menu.Item key={menuItem.key}>
+			{/* <Link to={(menuItem.route || menuItem.key) + (menuItem.query || '')}> */}
+			{/* <Link to={menuItem.key}> */}
+			{/* {item.icon && <Icon type={item.icon} />} */}
+			<span className="nav-text">{menuItem.title}</span>
+			{/* </Link> */}
+		</Menu.Item>
+	)
+	
+}
+
+const renderSubMenu = (subItem: IFSubMenu) => {
+
+	// const subs: IFSubMenu[] = subItem.subs
+	// const aaa: Array<IFSubMenu> = subItem.subs
+	return (
+		<>
+			<Menu.SubMenu
+				key={subItem.key}
+				title={
+					<span>
+						{/* {item.icon && <Icon type={item.icon} />} */}
+						<span className="nav-text">{subItem.title}</span>
+					</span>
+				}
+			>
+				{subItem.subs!.map((sub: MenuBase) => {
+					return (
+						renderMenuItem(sub)
+					)
+				})}
+			</Menu.SubMenu>	
+		</>
+	)
 }
 
 export default SideBarItem

@@ -1,10 +1,15 @@
 import React from 'react'
+import Avatar from './avatar'
+import DropDownList from './dropdown'
+import Screen from './screen'
 
 class Rightmenu extends React.Component{
-	render() {
+	render(): JSX.Element {
 		return (
 			<div className="right_nemu">
-				右侧功能菜单
+				<DropDownList />
+				<Avatar />
+				<Screen />
 			</div>
 		)
 	}

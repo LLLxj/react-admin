@@ -7,13 +7,13 @@ class Collapsed extends React.Component{
 		collapsed: false
 	}
 
-	toggleCollapsed = () => {
+	toggleCollapsed = (): void => {
 		this.setState({
 			collapsed: !this.state.collapsed
 		})
 	}
 
-	render() {
+	render(): JSX.Element {
 		return (
 			<Button type="primary" size="small" onClick={this.toggleCollapsed} className="collapsed-btn">
 				{React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}

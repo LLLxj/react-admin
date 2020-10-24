@@ -4,7 +4,7 @@ import Collapsed from './collapsed'
 import Breadcrumbs from './breadcrumb'
 import Rightmenu from './rightmenu'
 
-function Navbar() {
+const Navbar = (): JSX.Element => {
 	return (
 		<div className="nav_navbar">
 			<Collapsed />

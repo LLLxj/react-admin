@@ -3,7 +3,7 @@ import './styles/App.less'
 import { Layout } from 'antd'
 import LayoutContainer from './layout/index'
 
-function App() {
+const App = (): JSX.Element => {
 	return (
 		<div className="App">
 			<Layout>

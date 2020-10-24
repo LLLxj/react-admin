@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
+import Routes from './../../routes'
 
-function Content() {
-	return (
-		<div>内容</div>
-	)
+class Content extends Component{
+
+	render(): JSX.Element {
+		return (
+			<div>
+				<Routes />
+			</div>
+		)
+	}
 }
+
 
 export default Content

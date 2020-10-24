@@ -5,15 +5,15 @@ import NavBar from './Navbar'
 import SideBar from './Sidebar'
 import Content from './Content'
 
-function LayoutContainer() {
+const LayoutContainer = (): JSX.Element => {
 	return (
 		<div className="app-wrapper">
 			<div className="app_sidebar">
-				<SideBar></SideBar>
+				<SideBar />
 			</div>
 			<div className="app_right">
-				<NavBar></NavBar>
-				<Content></Content>
+				<NavBar />
+				<Content />
 			</div>
 		</div>
 	)

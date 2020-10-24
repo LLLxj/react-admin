@@ -2,7 +2,7 @@ import React from 'react'
 import { Breadcrumb } from 'antd'
 
 class Breadcrumbs extends React.Component{
-	render() {
+	render(): JSX.Element {
 		return (
 			<Breadcrumb>
 				<Breadcrumb.Item>home</Breadcrumb.Item>
