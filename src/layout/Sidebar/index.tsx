@@ -4,7 +4,11 @@ import Logo from './Logo'
 import SideBarItem from './Sidebaritem'
 // const { Sider } = Layout
 
-const Sidebar = (): JSX.Element => {
+type HeaderCustomProps = {
+	collapsed: boolean
+}
+
+const Sidebar = (props: HeaderCustomProps): JSX.Element => {
 	return (
 		<Layout className="app_sidebar">
 			{/* <Sider
@@ -15,8 +19,7 @@ const Sidebar = (): JSX.Element => {
 			>
 			</Sider> */}
 			<Logo />
-			<SideBarItem />
-			
+			<SideBarItem collapsed={props.collapsed}/>
 		</Layout>
 	)
 }

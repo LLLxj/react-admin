@@ -5,7 +5,7 @@ class Content extends Component{
 
 	render(): JSX.Element {
 		return (
-			<div>
+			<div className="content-wrap">
 				<Routes />
 			</div>
 		)
