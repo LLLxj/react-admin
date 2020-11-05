@@ -5,6 +5,7 @@ import '../styles/layout/index.less'
 import NavBar from './Navbar'
 import SideBar from './Sidebar'
 import Content from './Content'
+import classNames from 'classnames'
 // import { ThemeProvider } from '../utils/context'
 
 const LayoutContainer = (): JSX.Element => {
@@ -24,7 +25,7 @@ const LayoutContainer = (): JSX.Element => {
 				</div>
 			</ThemeProvider> */}
 
-			<div className="app_sidebar">
+			<div className={classNames('app_sidebar', { 'unActive': collapsed })}>
 				<SideBar collapsed={collapsed}/>
 			</div>
 			

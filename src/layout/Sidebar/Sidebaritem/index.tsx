@@ -9,11 +9,13 @@ type HeaderCustomProps = {
 	collapsed: boolean
 }
 
+
 // class SideBarItem extends React.Component{
 const SideBarItem = (props: HeaderCustomProps): JSX.Element => {
 	const [selectedKeys, setSelectedKeys] = useState<[]>([])
 
 	const handleMenuClick = (item: any): void => {
+		console.log(item)
 		setSelectedKeys(item.keyPath)
 	}
 

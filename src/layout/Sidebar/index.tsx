@@ -10,7 +10,7 @@ type HeaderCustomProps = {
 
 const Sidebar = (props: HeaderCustomProps): JSX.Element => {
 	return (
-		<Layout className="app_sidebar">
+		<Layout>
 			{/* <Sider
 				trigger={null}
 				breakpoint="lg"
@@ -18,7 +18,7 @@ const Sidebar = (props: HeaderCustomProps): JSX.Element => {
 				className="sider-custom"
 			>
 			</Sider> */}
-			<Logo />
+			<Logo collapsed={props.collapsed}/>
 			<SideBarItem collapsed={props.collapsed}/>
 		</Layout>
 	)

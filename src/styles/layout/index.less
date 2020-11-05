@@ -1,8 +1,11 @@
+@expendWidth: 210px;
+@collapsedWidth: 80px;
+
 .app-wrapper{
     display: flex;
     flex-direction: wrap;
     .app_sidebar{
-      width: 210px;
+      width: @expendWidth;
       display: flex;
       flex-direction: column;
       .logo{
@@ -20,6 +23,9 @@
         .sider-custom{
           height: calc(100vh - 60px);
         }
+      }
+      &.unActive {
+        width: @collapsedWidth;
       }
       // width: $sideBarWidth;
     }
