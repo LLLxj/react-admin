@@ -1,21 +1,37 @@
 import React from 'react'
 import { Breadcrumb } from 'antd'
 
-class Breadcrumbs extends React.Component{
-	render(): JSX.Element {
-		return (
-			<Breadcrumb>
-				<Breadcrumb.Item>home</Breadcrumb.Item>
-				<Breadcrumb.Item>
-				Application Center
-				</Breadcrumb.Item>
-				<Breadcrumb.Item>
-				Application List
-				</Breadcrumb.Item>
-				<Breadcrumb.Item>Application Center</Breadcrumb.Item>
-			</Breadcrumb>
-		)
-	}
+// class Breadcrumbs extends React.Component{
+// 	render(): JSX.Element {
+// 		return (
+// 			<Breadcrumb>
+// 				<Breadcrumb.Item>home</Breadcrumb.Item>
+// 				<Breadcrumb.Item>
+// 				Application Center
+// 				</Breadcrumb.Item>
+// 				<Breadcrumb.Item>
+// 				Application List
+// 				</Breadcrumb.Item>
+// 				<Breadcrumb.Item>Application Center</Breadcrumb.Item>
+// 			</Breadcrumb>
+// 		)
+// 	}
+// }
+
+
+const Breadcrumbs = (): JSX.Element => {
+	return (
+		<Breadcrumb>
+			<Breadcrumb.Item>home</Breadcrumb.Item>
+			<Breadcrumb.Item>
+			Application Center
+			</Breadcrumb.Item>
+			<Breadcrumb.Item>
+			Application List
+			</Breadcrumb.Item>
+			<Breadcrumb.Item>Application Center</Breadcrumb.Item>
+		</Breadcrumb>
+	)
 }
 
 export default Breadcrumbs

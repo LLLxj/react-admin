@@ -1,50 +1,118 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React , { useState }from 'react'
+import React from 'react'
 import { Menu } from 'antd'
 import MenusList, { IFSubMenu, MenuBase } from '../../../routes/config'
 import { Link, HashRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { changeRouteCreater } from '../../../redux/Routes'
+import {
+	HomeOutlined,
+	// SettingFilled,
+	// SmileOutlined,
+	// SyncOutlined,
+	// LoadingOutlined,
+} from '@ant-design/icons'
+// import Item from 'antd/lib/list/Item'
 // import { ThemeConsumer } from '../../../utils/context'
 
-type HeaderCustomProps = {
-	collapsed: boolean
+const mapStateToProps = (state: any) => {
+	console.log(state)
+	console.log(state.Route.routes)
+	return {
+		collapse: state.Sidebar.collapse,
+		routes: state.Route.routes
+	}
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+	return {
+		// 所有处理事件的方法都以handleXXX命名
+		handleChangeRoute: bindActionCreators(changeRouteCreater, dispatch)
+	}
+}
+
+interface Props {
+	collapse: boolean,
+	routes: string[],
+	handleChangeRoute: () => any
 }
 
 
-// class SideBarItem extends React.Component{
-const SideBarItem = (props: HeaderCustomProps): JSX.Element => {
-	const [selectedKeys, setSelectedKeys] = useState<[]>([])
+class SideBarItem extends React.Component<Props>{
 
-	const handleMenuClick = (item: any): void => {
-		console.log(item)
-		setSelectedKeys(item.keyPath)
+	constructor(props: Props) {
+		super(props)
 	}
 
-	return (
-		<div className="side-wrapper">
-			<HashRouter>
-				{MenusList.menus.map((item: IFSubMenu, index: number) => (
-					<Menu 
-						defaultSelectedKeys = {['/']}
-						selectedKeys = {selectedKeys}
-						onClick = {handleMenuClick}
-						inlineCollapsed={props.collapsed}
-						mode = "inline"
-						theme = "dark" 
-						key = {index}
-					>
-						<>
-							{item.children! ? renderSubMenu(item) : renderMenuItem(item)}
-						</>
-					</Menu>
-				))}
-			</HashRouter>
-		</div>
-	)
+	handleMenuClick = (item: any) => {
+		console.log(1111)
+		console.log(item)
+		const obj: string[] = item.keyPath
+		console.log(obj)
+		this.props.handleChangeRoute()
+	}
+
+	render (): JSX.Element {
+		return (
+			<div className="side-wrapper">
+				<HashRouter>
+					{MenusList.menus.map((item: IFSubMenu, index: number) => (
+						<Menu 
+							defaultSelectedKeys = {['/']}
+							selectedKeys = {this.props.routes}
+							onClick = {this.handleMenuClick}
+							inlineCollapsed={this.props.collapse}
+							mode = "inline"
+							theme = "dark" 
+							key = {index}
+						>
+							<>
+								{item.children! ? renderSubMenu(item) : renderMenuItem(item)}
+							</>
+						</Menu>
+					))}
+				</HashRouter>
+			</div>
+		)
+	}
+
 }
+
+// const SideBarItem = (props: HeaderCustomProps): JSX.Element => {
+// 	const [selectedKeys, setSelectedKeys] = useState<[]>([])
+
+// 	const handleMenuClick = (item: any): void => {
+// 		console.log(item)
+// 		setSelectedKeys(item.keyPath)
+// 	}
+
+// 	return (
+// 		<div className="side-wrapper">
+// 			<HashRouter>
+// 				{MenusList.menus.map((item: IFSubMenu, index: number) => (
+// 					<Menu 
+// 						defaultSelectedKeys = {['/']}
+// 						selectedKeys = {selectedKeys}
+// 						onClick = {handleMenuClick}
+// 						inlineCollapsed={props.collapsed}
+// 						mode = "inline"
+// 						theme = "dark" 
+// 						key = {index}
+// 					>
+// 						<>
+// 							{item.children! ? renderSubMenu(item) : renderMenuItem(item)}
+// 						</>
+// 					</Menu>
+// 				))}
+// 			</HashRouter>
+// 		</div>
+// 	)
+// }
 
 const renderMenuItem = (menuItem: MenuBase) => {
 	return (
-		<Menu.Item key={menuItem.path}>
+		<Menu.Item key={menuItem.path} icon={<HomeOutlined />}>
 			<Link to={menuItem.path} replace>
 				{menuItem.title}
 			</Link>
@@ -57,6 +125,7 @@ const renderSubMenu = (subItem: IFSubMenu) => {
 		<>
 			<Menu.SubMenu
 				key={subItem.path}
+				icon={<HomeOutlined />}
 				title={
 					<span>
 						<span className="nav-text">{subItem.title}</span>
@@ -73,72 +142,5 @@ const renderSubMenu = (subItem: IFSubMenu) => {
 	)
 }
 
-export default SideBarItem
-
-// import React from 'react'
-// import {
-// 	AppstoreOutlined,
-// 	MenuUnfoldOutlined,
-// 	MenuFoldOutlined,
-// 	PieChartOutlined,
-// 	DesktopOutlined,
-// 	ContainerOutlined,
-// 	MailOutlined
-// } from '@ant-design/icons'
-
-// const { SubMenu } = Menu
-
-// class SideBarItem extends React.Component {
-// 	state = {
-// 		collapsed: false,
-// 	}
-
-// 	toggleCollapsed = (): void => {
-// 		this.setState({
-// 			collapsed: !this.state.collapsed,
-// 		})
-// 	}
-
-// 	render(): JSX.Element {
-// 		return (
-// 			<div style={{ width: 256 }}>
-// 				<Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
-// 					{React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-// 				</Button>
-// 				<Menu
-// 					defaultSelectedKeys={['1']}
-// 					defaultOpenKeys={['sub1']}
-// 					mode="inline"
-// 					theme="dark"
-// 					inlineCollapsed={this.state.collapsed}
-// 				>
-// 					<Menu.Item key="1" icon={<PieChartOutlined />}>
-// 						Option 1
-// 					</Menu.Item>
-// 					<Menu.Item key="2" icon={<DesktopOutlined />}>
-// 						Option 2
-// 					</Menu.Item>
-// 					<Menu.Item key="3" icon={<ContainerOutlined />}>
-// 						Option 3
-// 					</Menu.Item>
-// 					<SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-// 						<Menu.Item key="5">Option 5</Menu.Item>
-// 						<Menu.Item key="6">Option 6</Menu.Item>
-// 						<Menu.Item key="7">Option 7</Menu.Item>
-// 						<Menu.Item key="8">Option 8</Menu.Item>
-// 					</SubMenu>
-// 					<SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-// 						<Menu.Item key="9">Option 9</Menu.Item>
-// 						<Menu.Item key="10">Option 10</Menu.Item>
-// 						<SubMenu key="sub3" title="Submenu">
-// 							<Menu.Item key="11">Option 11</Menu.Item>
-// 							<Menu.Item key="12">Option 12</Menu.Item>
-// 						</SubMenu>
-// 					</SubMenu>
-// 				</Menu>
-// 			</div>
-// 		)
-// 	}
-// }
-
+export default connect(mapStateToProps, mapDispatchToProps)(SideBarItem)
 // export default SideBarItem

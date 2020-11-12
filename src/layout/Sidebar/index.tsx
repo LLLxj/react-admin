@@ -4,11 +4,8 @@ import Logo from './Logo'
 import SideBarItem from './Sidebaritem'
 // const { Sider } = Layout
 
-type HeaderCustomProps = {
-	collapsed: boolean
-}
-
-const Sidebar = (props: HeaderCustomProps): JSX.Element => {
+// const Sidebar = (props: HeaderCustomProps): JSX.Element => {
+const Sidebar = (): JSX.Element => {
 	return (
 		<Layout>
 			{/* <Sider
@@ -18,8 +15,10 @@ const Sidebar = (props: HeaderCustomProps): JSX.Element => {
 				className="sider-custom"
 			>
 			</Sider> */}
-			<Logo collapsed={props.collapsed}/>
-			<SideBarItem collapsed={props.collapsed}/>
+			{/* <Logo collapsed={props.collapsed}/> */}
+			{/* <Logo /> */}
+			{/* <SideBarItem collapsed={props.collapsed}/> */}
+			<SideBarItem />
 		</Layout>
 	)
 }

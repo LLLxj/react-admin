@@ -1,18 +1,53 @@
 import React from 'react'
 import { Button } from 'antd'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {sidebarCollapseCreator} from '../../../redux/Sidebar'
 
-type HeaderCustomProps = {
-	toggle: () => void;
-	collapsed: boolean
+// type HeaderCustomProps = {
+// 	toggle: () => void;
+// 	collapsed: boolean
+// }
+
+// const Collapsed = (props: HeaderCustomProps): JSX.Element => {
+// 	return (
+// 		<Button type="primary" size="small" onClick={props.toggle} className="collapsed-btn">
+// 			{React.createElement(props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
+// 		</Button>
+// 	)
+// }
+
+interface Props {
+	collapse: boolean,
+	handleClickCollapse: () => any
 }
 
-const Collapsed = (props: HeaderCustomProps): JSX.Element => {
-	return (
-		<Button type="primary" size="small" onClick={props.toggle} className="collapsed-btn">
-			{React.createElement(props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-			{/* {React.createElement(props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)} */}
-		</Button>
-	)
+const mapStateToProps = (state: any) => {
+	return {
+		collapse: state.Sidebar.collapse,
+	}
 }
-export default Collapsed
+  
+const mapDispatchToProps = (dispatch: any) => {
+	return {
+		// 所有处理事件的方法都以handleXXX命名
+		handleClickCollapse: bindActionCreators(sidebarCollapseCreator, dispatch)
+	}
+}
+
+class Collapsed extends React.PureComponent<Props> {
+
+	handleClick = () => {
+		this.props.handleClickCollapse()
+	}
+
+	render(): JSX.Element {
+		return (
+			<Button type="primary" size="small" onClick={this.handleClick} className="collapsed-btn">
+				{React.createElement(this.props.collapse ? MenuUnfoldOutlined : MenuFoldOutlined)}
+			</Button> 
+		)
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Collapsed)

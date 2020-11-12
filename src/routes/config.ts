@@ -1,8 +1,15 @@
+// import {
+// 	HomeOutlined,
+// 	SettingFilled,
+// 	SmileOutlined,
+// 	SyncOutlined,
+// 	LoadingOutlined,
+// } from '@ant-design/icons'
 
 export interface MenuBase {
 	path: string;
 	title: string;
-	// icon: string;
+	icon: string | JSX.Element,
 	component: string;
 	// query: string;
 	// route: string;
@@ -23,34 +30,40 @@ const menus: {
 		{ 
 			path: '/',
 			title: 'dashboard',
-			component: 'Dashboard'
+			component: 'Dashboard',
+			icon: 'HomeOutlined'
 		},
 		{
 			path: '/button',
 			title: 'button',
 			component: 'Button',
+			icon: 'SettingFilled',
 			children: [
 				{
 					path: '/button/normal',
 					title: 'normal-button',
-					component: 'NormalButton'
+					component: 'NormalButton',
+					icon: 'SmileOutlined'
 				},
 				{
 					path: '/button/info',
 					title: 'info-button',
-					component: 'InfoButton'
+					component: 'InfoButton',
+					icon: 'SmileOutlined'
 				}
 			]
 		},
 		{
 			path: '/detail',
 			title: 'detail',
-			component: 'Detail'
+			component: 'Detail',
+			icon: 'SmileOutlined'
 		},
 		{
 			path: '/test',
 			title: 'test',
-			component: 'Test'
+			component: 'Test',
+			icon: 'SmileOutlined'
 		}
 	]
 }
