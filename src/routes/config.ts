@@ -29,7 +29,7 @@ const menus: {
 		// 菜单相关路由
 		{ 
 			path: '/',
-			title: 'dashboard',
+			title: '首页',
 			component: 'Dashboard',
 			icon: 'HomeOutlined'
 		},

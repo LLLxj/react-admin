@@ -7,71 +7,18 @@ import NavBar from './Navbar'
 import SideBar from './Sidebar'
 import Content from './Content'
 import classNames from 'classnames'
-
-// import { ThemeProvider } from '../utils/context'
-
-// const LayoutContainer = (): JSX.Element => {
-
-// 	const [collapsed, setCollapsed] = useState<boolean>(false)
-
-// 	const toggle = () => {
-// 		setCollapsed(!collapsed)
-// 	}
-
-// 	return (
-// 		<div className="app-wrapper">
-
-
-// 			<div className={classNames('app_sidebar', { 'unActive': collapsed })}>
-// 				<SideBar collapsed={collapsed}/>
-// 			</div>
-
-// 			<div className="app_right">
-// 				<NavBar toggle={toggle} collapsed={collapsed} />
-// 				<Content />
-// 			</div>
-// 		</div>
-		
-// 	)
-// }
-
-// const LayoutContainer = (): JSX.Element => {
-
-// 	const [collapsed, setCollapsed] = useState<boolean>(false)
-
-// 	const toggle = () => {
-// 		setCollapsed(!collapsed)
-// 	}
-
-// 	return (
-// 		<div className="app-wrapper">
-
-
-// 			<div className={classNames('app_sidebar', { 'unActive': collapsed })}>
-// 				<SideBar />
-// 				{/* <SideBar collapsed={collapsed}/> */}
-// 			</div>
-
-// 			<div className="app_right">
-// 				{/* <NavBar toggle={toggle} collapsed={collapsed} /> */}
-// 				<NavBar />
-// 				<Content />
-// 			</div>
-// 		</div>
-		
-// 	)
-// }
+import { ReduxProps } from './../redux'
+import GlobleSetting from '../components/Setting'
 
 interface Props {
 	collapse: boolean
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: ReduxProps) => {
 	return {
 		collapse: state.Sidebar.collapse
 	}
 }
-
 
 class LayoutContainer extends Component<Props> {
 
@@ -89,6 +36,8 @@ class LayoutContainer extends Component<Props> {
 					<NavBar />
 					<Content />
 				</div>
+				{/* 全局设置 */}
+				<GlobleSetting />
 			</div>
 		)
 	}

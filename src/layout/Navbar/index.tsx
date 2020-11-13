@@ -1,7 +1,7 @@
 import React from 'react'
 // import { Layout } from 'antd'
 import Collapsed from './collapsed'
-import Breadcrumbs from './breadcrumb'
+// import Breadcrumbs from './breadcrumb'
 import Rightmenu from './rightmenu'
 
 
@@ -11,7 +11,7 @@ const Navbar = (): JSX.Element => {
 		<div className="nav_navbar">
 			{/* <Collapsed toggle={props.toggle} collapsed={props.collapsed} /> */}
 			<Collapsed />
-			<Breadcrumbs />
+			{/* <Breadcrumbs /> */}
 			<Rightmenu />
 		</div>
 	)

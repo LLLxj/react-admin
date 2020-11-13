@@ -2,14 +2,9 @@ interface RouteState {
 	routes: string[]
 }
 
-interface RouteReturn {
-	type: string,
-	routes: string[]
-}
-
-
-export const changeRouteCreater = (): any => {
-	return { type: 'CHANGE_ROUTE', routes: ['/'] }
+export const changeRouteCreater = (data: string[]): Action => {
+// export const changeRouteCreater = (): any => {
+	return { type: 'CHANGE_ROUTE', routes: data }
 }
 
 const initState = {
@@ -21,15 +16,11 @@ interface Action {
 	routes:  string[]
 }
 
-const reducer = (state: RouteState = initState, action: Action): any => {
-	console.log('获取值')
-	console.log(state.routes)
-	// if (action) {
-	// 	return state.routes
-	// }
+const reducer = (state: RouteState = initState, action: Action): RouteState => {
 	switch (action.type) {
 	case 'CHANGE_ROUTE':
-		return { ...state, routes: state.routes }
+		// return { ...state, routes: action.routes }
+		return { routes: action.routes }
 	default:
 		return state
 	}

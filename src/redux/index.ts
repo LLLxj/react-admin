@@ -7,6 +7,15 @@ const reducers = {
 	Route: Route.reducer
 }
 
+export interface ReduxProps {
+	Route: {
+		routes: string[]
+	},
+	Sidebar: {
+		collapse: boolean
+	}
+}
+
 // const initState = {
 // 	Sidebar: Sidebar.initState,
 // 	Route: Route.initState,

@@ -16,11 +16,22 @@ const Sidebar = (): JSX.Element => {
 			>
 			</Sider> */}
 			{/* <Logo collapsed={props.collapsed}/> */}
-			{/* <Logo /> */}
+			<Logo />
 			{/* <SideBarItem collapsed={props.collapsed}/> */}
 			<SideBarItem />
 		</Layout>
 	)
 }
+
+// class Sidebar extends Components {
+// 	render(): JSX.Element {
+// 		return (
+// 			<Layout>
+// 				<Logo />
+// 				<SideBarItem />
+// 			</Layout>
+// 		)
+// 	}
+// }
 
 export default Sidebar

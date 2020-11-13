@@ -4,26 +4,14 @@ import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {sidebarCollapseCreator} from '../../../redux/Sidebar'
-
-// type HeaderCustomProps = {
-// 	toggle: () => void;
-// 	collapsed: boolean
-// }
-
-// const Collapsed = (props: HeaderCustomProps): JSX.Element => {
-// 	return (
-// 		<Button type="primary" size="small" onClick={props.toggle} className="collapsed-btn">
-// 			{React.createElement(props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-// 		</Button>
-// 	)
-// }
+import { ReduxProps } from '../../../redux'
 
 interface Props {
 	collapse: boolean,
-	handleClickCollapse: () => any
+	handleClickCollapse: () => void
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: ReduxProps) => {
 	return {
 		collapse: state.Sidebar.collapse,
 	}

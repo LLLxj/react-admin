@@ -1,5 +1,9 @@
-export const sidebarCollapseCreator = (): any => {
+export const sidebarCollapseCreator = (): ReturnProps => {
 	return { type: 'SIDEBAR_COLLAPSE' }
+}
+
+interface ReturnProps {
+	type: string
 }
 
 const initState = {
@@ -12,13 +16,14 @@ interface RouteState {
 
 interface Action {
 	type: string,
-	path:  string,
+	collapse:  boolean,
 }
 
 const reducer = (state: RouteState = initState, action: Action): RouteState => {
 	switch (action.type) {
 	case 'SIDEBAR_COLLAPSE':
-		return { ...state, collapse: !state.collapse }
+		// return { ...state, collapse: !state.collapse }
+		return { collapse: !state.collapse }
 	default:
 		return state
 	}
