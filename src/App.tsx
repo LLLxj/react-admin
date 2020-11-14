@@ -5,7 +5,9 @@ import { Layout } from 'antd'
 import LayoutContainer from './layout/index'
 import store from './redux'
 
-const App: React.FC = () => {
+
+const App = (): JSX.Element => {
+
 	return (
 		<Provider store={store}>
 			<div className="App">
@@ -14,9 +16,9 @@ const App: React.FC = () => {
 						<LayoutContainer />
 					</Layout>
 				</Layout>
+
 			</div>
 		</Provider>
-		
 	)
 }
 

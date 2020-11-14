@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from 'redux'
 import Sidebar from './Sidebar'
 import Route from './Routes'
+import GlobalSetting from './GlobalSetting'
 
 const reducers = {
 	Sidebar: Sidebar.reducer,
-	Route: Route.reducer
+	Route: Route.reducer,
+	GlobalSetting: GlobalSetting.reducer
 }
 
 export interface ReduxProps {
@@ -13,6 +15,9 @@ export interface ReduxProps {
 	},
 	Sidebar: {
 		collapse: boolean
+	},
+	GlobalSetting: {
+		sidebarLogoShow: boolean
 	}
 }
 

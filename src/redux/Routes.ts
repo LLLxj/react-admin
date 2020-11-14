@@ -8,7 +8,7 @@ export const changeRouteCreater = (data: string[]): Action => {
 }
 
 const initState = {
-	routes: ['/']
+	routes: ['/dashboard']
 }
 
 interface Action {

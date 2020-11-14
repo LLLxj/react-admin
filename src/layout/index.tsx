@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-// import { Layout } from 'antd'
 import '../styles/layout/index.less'
 import {connect} from 'react-redux'
-// import { withRouter, RouteComponentProps } from 'react-router-dom'
 import NavBar from './Navbar'
 import SideBar from './Sidebar'
 import Content from './Content'
@@ -28,11 +26,9 @@ class LayoutContainer extends Component<Props> {
 			<div className="app-wrapper">
 				<div className={classNames('app_sidebar', { 'unActive': this.props.collapse })}>
 					<SideBar />
-					{/* <SideBar collapsed={collapsed}/> */}
 				</div>
 
 				<div className="app_right">
-					{/* <NavBar toggle={toggle} collapsed={collapsed} /> */}
 					<NavBar />
 					<Content />
 				</div>

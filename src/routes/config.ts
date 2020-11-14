@@ -10,7 +10,7 @@ export interface MenuBase {
 	path: string;
 	title: string;
 	icon: string | JSX.Element,
-	component: string;
+	component: string | JSX.Element;
 	// query: string;
 	// route: string;
 }
@@ -28,7 +28,7 @@ const menus: {
 	menus: [
 		// 菜单相关路由
 		{ 
-			path: '/',
+			path: '/dashboard',
 			title: '首页',
 			component: 'Dashboard',
 			icon: 'HomeOutlined'
@@ -64,6 +64,14 @@ const menus: {
 			title: 'test',
 			component: 'Test',
 			icon: 'SmileOutlined'
+		}
+	],
+	other: [
+		{
+			path: '/login',
+			title: 'login',
+			component: 'login',
+			icon: ''
 		}
 	]
 }

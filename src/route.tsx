@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 // import NotFound from './components/pages/NotFound';
 // import Login from './components/pages/Login';

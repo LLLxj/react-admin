@@ -5,15 +5,14 @@ import { Link, HashRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { changeRouteCreater } from '../../../redux/Routes'
-import {
-	HomeOutlined,
-} from '@ant-design/icons'
+import { HomeOutlined } from '@ant-design/icons'
 import { ReduxProps } from '../../../redux'
-
+import classNames from 'classnames'
 
 interface Props {
 	collapse: boolean,
 	routes: string[],
+	sidebarLogoShow: boolean,
 	handleChangeRoute: (value: string[]) => void
 }
 
@@ -32,7 +31,7 @@ class SideBarItem extends React.Component<Props>{
 	// render (): JSX.Element {
 	render (): JSX.Element {
 		return (
-			<div className="side-wrapper">
+			<div className={classNames('sidebar_wrap', { 'sidebarLogoShow': !this.props.sidebarLogoShow })}>
 				<HashRouter>
 					{MenusList.menus.map((item: IFSubMenu, index: number) => (
 						<Menu 
@@ -91,7 +90,8 @@ const renderSubMenu = (subItem: IFSubMenu) => {
 const mapStateToProps = (state: ReduxProps) => {
 	return {
 		collapse: state.Sidebar.collapse,
-		routes: state.Route.routes
+		routes: state.Route.routes,
+		sidebarLogoShow: state.GlobalSetting.sidebarLogoShow
 	}
 }
 
