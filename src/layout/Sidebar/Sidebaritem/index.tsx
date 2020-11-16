@@ -16,6 +16,9 @@ interface Props {
 	handleChangeRoute: (value: string[]) => void
 }
 
+interface InputItemProps {
+	[index: string]: any
+}
 
 class SideBarItem extends React.Component<Props>{
 
@@ -23,7 +26,7 @@ class SideBarItem extends React.Component<Props>{
 		super(props)
 	}
 
-	handleMenuClick = (item: any) => {
+	handleMenuClick = (item: InputItemProps) => {
 		const obj: string[] = item.keyPath
 		this.props.handleChangeRoute(obj)
 	}

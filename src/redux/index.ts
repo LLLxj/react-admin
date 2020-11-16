@@ -2,11 +2,13 @@ import { createStore, combineReducers } from 'redux'
 import Sidebar from './Sidebar'
 import Route from './Routes'
 import GlobalSetting from './GlobalSetting'
+import Users from './Users'
 
 const reducers = {
 	Sidebar: Sidebar.reducer,
 	Route: Route.reducer,
-	GlobalSetting: GlobalSetting.reducer
+	GlobalSetting: GlobalSetting.reducer,
+	Users: Users.reducer
 }
 
 export interface ReduxProps {
@@ -18,6 +20,9 @@ export interface ReduxProps {
 	},
 	GlobalSetting: {
 		sidebarLogoShow: boolean
+	},
+	Users: {
+		token: string
 	}
 }
 

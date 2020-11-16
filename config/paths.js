@@ -67,6 +67,8 @@ module.exports = {
   publicUrlOrPath,
 };
 
+console.log(moduleFileExtensions)
+
 
 
 module.exports.moduleFileExtensions = moduleFileExtensions;
