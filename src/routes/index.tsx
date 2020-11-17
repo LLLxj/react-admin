@@ -34,6 +34,8 @@ class Routes extends Component{
 							<Route exact path="/test" component={Test}/>
 						</Route>
 
+						
+
 
 						{/* <Route exact path="/" component={Dashboard} /> */}
 						{/* <Route path="/login" component={Login} /> */}

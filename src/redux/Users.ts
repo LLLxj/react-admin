@@ -1,3 +1,7 @@
+interface RouteState {
+	token: string,
+}
+
 export const userTokenCreator = (data: string): Action => {
 	return { type: 'USER_TOKEN', token: data }
 }
@@ -5,20 +9,15 @@ export const userTokenCreator = (data: string): Action => {
 const initState = {
 	token: ''
 }
-
-interface RouteState {
-	token: string | '',
-}
-
 interface Action {
 	type: string,
-	token: string | '',
+	token: string
 }
 
-const reducer = (state: RouteState = initState, action: Action): RouteState => {
+const reducer = (state: RouteState = initState, action: Action): any => {
 	switch (action.type) {
 	case 'USER_TOKEN':
-		return { token: action.token }
+		return { ...state, token: action.token }
 	default:
 		return state
 	}

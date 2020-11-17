@@ -7,8 +7,6 @@ const service = axios.create({
 	timeout: 15000 // 请求超时时间
 })
 
-console.log(service)
-
 service.interceptors.request.use(config => {
 	config.headers['Token'] = Auth.getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
 	return config
@@ -23,7 +21,6 @@ service.interceptors.response.use(
 // response => response,
 // response => response,
 	(response) => {
-		console.log(response)
 		/**
 		* code为非20000是抛错 可结合自己业务进行修改
 		*/

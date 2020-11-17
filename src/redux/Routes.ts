@@ -8,12 +8,12 @@ export const changeRouteCreater = (data: string[]): Action => {
 }
 
 const initState = {
-	routes: ['/dashboard']
+	routes: ['/']
 }
 
 interface Action {
 	type: string,
-	routes:  string[]
+	routes: string[]
 }
 
 const reducer = (state: RouteState = initState, action: Action): RouteState => {

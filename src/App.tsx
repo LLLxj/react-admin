@@ -1,12 +1,10 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import './styles/App.less'
-import { Layout } from 'antd'
-import LayoutContainer from './layout/index'
 import store from './redux'
 import { connect } from 'react-redux'
 import { ReduxProps } from './redux'
-import Routes from './routes'
+import Index from './views/index'
 
 
 interface Props {
@@ -14,32 +12,36 @@ interface Props {
 }
 
 class App extends React.Component<Props>{
-
 	constructor(props: Props) {
 		super(props)
 	}
 
 	render (): JSX.Element {
-
-		if (this.props.token === '') {
-			return (
-				// <Login />
-				<Routes />
-			)
-		}
-
 		return (
 			<Provider store={store}>
-				<div className="App">
-					<Layout>
-						<Layout className="app_layout">
-							<LayoutContainer />
-						</Layout>
-					</Layout>
-	
-				</div>
+				<Index />
 			</Provider>
 		)
+		// if (this.props.token === '') {
+		// 	return (
+		// 		<Provider store={store}>
+		// 			{/* <Login /> */}
+		// 			<Routes />
+		// 		</Provider>
+		// 	)
+		// }
+		// return (
+		// 	<Provider store={store}>
+		// 		<div className="App">
+		// 			<Layout>
+		// 				<Layout className="app_layout">
+		// 					<LayoutContainer />
+		// 				</Layout>
+		// 			</Layout>
+	
+		// 		</div>
+		// 	</Provider>
+		// )
 	}
 }
 

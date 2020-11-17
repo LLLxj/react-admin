@@ -1,20 +1,13 @@
 import React from 'react'
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import { UserOutlined, KeyOutlined } from '@ant-design/icons'
 import System from '../../api/system'
-
-// class Login extends React.Component{
-// 	render (): JSX.Element {
-// 		return (
-// 			<div className="login-container">
-// 				<div className="login-form">
-// 					111
-// 				</div>
-// 			</div>
-// 		)
-// 	}
-// }
-
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { userTokenCreator } from '../../redux/Users'
+import { ReduxProps } from '../../redux'
+import { Redirect } from 'react-router-dom'
+import Auth from '../../utils/auth'
 interface Login {
 	username: string,
 	password: string
@@ -24,24 +17,31 @@ interface InputItemProps {
 	target: {
 		value: string
 	}
-	// [index: string]: any
 }
+interface Props {
+	token: string,
+	handleUserToken: (value: string) => void
+}
+class Login extends React.Component<Props>{
 
-class Login extends React.Component{
-
-	onFinish = (item: Login): void => {
-		console.log(item)
+	constructor(props: Props) {
+		super(props)
 	}
-
+	
 	sumbit = (): void => {
 		const dataForm = {
 			username: this.state.username,
 			password: this.state.password
 		}
-		console.log(dataForm)
-		console.log(System.login)
-		System.login(dataForm).then((data: any) => {
-			console.log(data)
+		System.login(dataForm).then((data: InterFaceResultReturnProps) => {
+			const { code, msg, result } = data.data
+			if (code === 200) {
+				message.success(msg)
+				Auth.setToken(result)
+				this.props.handleUserToken(result)
+			} else {
+				message.error(msg)
+			}
 		})
 	}
 
@@ -61,11 +61,15 @@ class Login extends React.Component{
 
 	render (): JSX.Element {
 
+		if(this.props.token !== ''){
+			return <Redirect to='/' />
+		}
+
 		return (
 			<div className="login-container">
 				<div className="login-form">
 					<h3 className="title">react-admin</h3>
-					<Form name="basic" initialValues={{ remember: true }} onFinish={this.onFinish}>
+					<Form name="basic" initialValues={{ remember: true }}>
 						<Form.Item name="username" rules={[{ required: true, message: 'Please input your username!' }]}>
 							<Input onChange={this.handleUsernameInput} prefix={<UserOutlined />} size="large" />
 						</Form.Item>
@@ -82,4 +86,23 @@ class Login extends React.Component{
 	}
 }
 
-export default Login
+const mapStateToProps = (state: ReduxProps) => {
+	if (!state.Users) {
+		return {
+			token: ''
+		}
+	}
+	return {
+		token: state.Users.token
+	}
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+	return {
+		// 所有处理事件的方法都以handleXXX命名
+		handleUserToken: bindActionCreators(userTokenCreator, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
+// export default Login

@@ -7,7 +7,7 @@ interface ReturnProps {
 }
 
 const initState = {
-	sidebarLogoShow: true // 是否展示
+	sidebarLogoShow: false // 是否展示
 }
 
 interface RouteState {
