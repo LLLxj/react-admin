@@ -1,7 +1,7 @@
 interface InterFaceResultReturnProps {
     data: {
-		code: number,
-		msg: string,
-		result: any
+		code: string,
+		desc: string,
+		data: any
 	}
 }

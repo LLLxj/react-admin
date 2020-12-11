@@ -1,76 +1,75 @@
-// import {
-// 	HomeOutlined,
-// 	SettingFilled,
-// 	SmileOutlined,
-// 	SyncOutlined,
-// 	LoadingOutlined,
-// } from '@ant-design/icons'
+import {
+	HomeOutlined,
+	SettingFilled,
+	SmileOutlined,
+} from '@ant-design/icons'
+import Detail from '../views/detail'
+import Dashboard from '../views/dashboard'
+import Test from '../views/test'
+import NormalButoon from '../views/button/normal'
+import InfoButoon from '../views/button/info'
+import Login from '../views/login'
 
 export interface MenuBase {
 	path: string;
 	title: string;
-	icon: string | JSX.Element,
-	component: string | JSX.Element;
-	// query: string;
-	// route: string;
+	icon: any,
+	component?: any;
 }
 
 export interface IFSubMenu extends MenuBase {
 	children?: IFSubMenu[]
 }
 
-
 const menus: {
 	menus: IFSubMenu[];
-	// others: IFSubMenu[] | [];
 	[index: string]: IFSubMenu[];
 } = {
 	menus: [
 		// 菜单相关路由
 		{ 
-			path: '/dashboard',
+			path: '/',
 			title: '首页',
-			component: 'Dashboard',
-			icon: 'HomeOutlined'
+			component: Dashboard,
+			icon: HomeOutlined
 		},
 		{
 			path: '/button',
-			title: 'button',
-			component: 'Button',
+			title: '按钮',
 			icon: 'SettingFilled',
 			children: [
 				{
 					path: '/button/normal',
-					title: 'normal-button',
-					component: 'NormalButton',
+					title: '基础按钮',
+					component: NormalButoon,
 					icon: 'SmileOutlined'
 				},
 				{
 					path: '/button/info',
-					title: 'info-button',
-					component: 'InfoButton',
+					title: '提示按钮',
+					component: InfoButoon,
 					icon: 'SmileOutlined'
 				}
 			]
 		},
 		{
 			path: '/detail',
-			title: 'detail',
-			component: 'Detail',
+			title: '详情',
+			component: Detail,
 			icon: 'SmileOutlined'
 		},
 		{
 			path: '/test',
-			title: 'test',
-			component: 'Test',
+			title: '测试',
+			component: Test,
 			icon: 'SmileOutlined'
 		}
 	],
 	other: [
 		{
 			path: '/login',
-			title: 'login',
-			component: 'login',
+			title: '登录',
+			component: Login,
 			icon: ''
 		}
 	]

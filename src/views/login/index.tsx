@@ -8,9 +8,13 @@ import { userTokenCreator } from '../../redux/Users'
 import { ReduxProps } from '../../redux'
 import { Redirect } from 'react-router-dom'
 import Auth from '../../utils/auth'
+import md5 from 'js-md5'
 interface Login {
-	username: string,
-	password: string
+	account: string,
+	pwd: string,
+	captcha: string,
+	captchaToken: string
+	
 }
 
 interface InputItemProps {
@@ -30,33 +34,37 @@ class Login extends React.Component<Props>{
 	
 	sumbit = (): void => {
 		const dataForm = {
-			username: this.state.username,
-			password: this.state.password
+			account: this.state.account,
+			pwd: md5(this.state.pwd),
+			captcha: this.state.captcha,
+			captchaToken: this.state.captchaToken
 		}
-		System.login(dataForm).then((data: InterFaceResultReturnProps) => {
-			const { code, msg, result } = data.data
-			if (code === 200) {
-				message.success(msg)
-				Auth.setToken(result)
-				this.props.handleUserToken(result)
+		System.login(dataForm).then((res: InterFaceResultReturnProps) => {
+			const { code, desc, data } = res.data
+			if (code === '0000') {
+				message.success(desc)
+				Auth.setToken(data.token)
+				this.props.handleUserToken(data.token)
 			} else {
-				message.error(msg)
+				message.error(desc)
 			}
 		})
 	}
 
 	state = {
 		loading: false,
-		username: '',
-		password: ''
+		account: '',
+		pwd: '',
+		captcha: '',
+		captchaToken: ''
 	}
 
 	handleUsernameInput = (e: InputItemProps): void => {
-		this.setState({ username: e.target.value })
+		this.setState({ account: e.target.value })
 	}
 
 	handlePasswordInput = (e: InputItemProps): void => {
-		this.setState({ password: e.target.value })
+		this.setState({ pwd: e.target.value })
 	}
 
 	render (): JSX.Element {

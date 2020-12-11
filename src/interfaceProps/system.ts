@@ -1,6 +1,8 @@
 interface LoginProps {
-	username: string,
-	password: string
+	account: string,
+	pwd: string,
+	captcha: string,
+	captchaToken: string
 }
 
 export default LoginProps

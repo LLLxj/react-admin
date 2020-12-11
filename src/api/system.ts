@@ -6,7 +6,7 @@ const baseUrl = '/apiPro'
 class System {
 	static login(data: LoginProps): any {
 		return request({
-			url: `${baseUrl}/sys/login`,
+			url: `${baseUrl}/auth/login`,
 			method: 'post',
 			data
 		})

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-class NormalButton extends React.Component{
+class NormalButton extends Component{
 
 	render(): JSX.Element {
 		return (

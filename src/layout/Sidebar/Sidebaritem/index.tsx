@@ -27,6 +27,7 @@ class SideBarItem extends React.Component<Props>{
 	}
 
 	handleMenuClick = (item: InputItemProps) => {
+		console.log(item)
 		const obj: string[] = item.keyPath
 		this.props.handleChangeRoute(obj)
 	}
@@ -48,6 +49,7 @@ class SideBarItem extends React.Component<Props>{
 						>
 							<>
 								{item.children! ? renderSubMenu(item) : renderMenuItem(item)}
+								{/* {item.children! ? renderMenuItem(item) : renderSubMenu(item)} */}
 							</>
 						</Menu>
 					))}

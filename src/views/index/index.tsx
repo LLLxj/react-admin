@@ -20,22 +20,19 @@ class Index extends React.Component<Props>{
 
 	render (): JSX.Element {
 
-		// if (this.props.token === '') {
-		// 	return (
-		// 		<Provider store={store}>
-		// 			<Routes />
-		// 		</Provider>
-		// 	)
-		// }
+		if (this.props.token === '') {
+			return (
+				<Provider store={store}>
+					<Routes />
+				</Provider>
+			)
+		}
 		return (
 			<Provider store={store}>
 				<div className="App">
-					<Layout>
-						<Layout className="app_layout">
-							<LayoutContainer />
-						</Layout>
+					<Layout className="app_layout">
+						<LayoutContainer />
 					</Layout>
-	
 				</div>
 			</Provider>
 		)
