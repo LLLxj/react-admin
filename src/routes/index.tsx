@@ -25,12 +25,12 @@ class Routes extends Component{
 
 						{/* <Route path="/" render={() => <Redirect to="/dashboard" push />} /> */}
 						{/* <Route path="/" component={App}> */}
-						<Route path="/">
+						{/* <Route path="/">
 							<Route exact path="/button/normal" component={NormalButoon}/>
 							<Route exact path="/button/info" component={InfoButoon}/>
 							<Route exact path="/detail" component={Detail}/>
 							<Route exact path="/test" component={Test}/>
-						</Route>
+						</Route> */}
 						{/* <Route exact path="/" component={Dashboard} /> */}
 						{/* <Route path="/login" component={Login} /> */}
 						{/* <Route exact path="/button/normal" component={NormalButoon}/>
@@ -38,14 +38,12 @@ class Routes extends Component{
 						<Route exact path="/detail" component={Detail}/>
 						<Route exact path="/test" component={Test}/> */}
 						{/* <Route key={index} exact path={item.path} component={item.component}/> */}
-						{/* <>
-							<Route path="/">
-								{list.map((item: IFSubMenu) => {
-									{item.children ? renderSubRoute(item) : renderChildRoute(item)}
-									// {item.children! ? renderChildRoute(item) : renderSubRoute(item)}
-								})}
-							</Route>
-						</> */}
+						<>
+							{list.map((item: IFSubMenu) => {
+								{item.children ? renderSubRoute(item) : renderChildRoute(item)}
+								// {item.children! ? renderChildRoute(item) : renderSubRoute(item)}
+							})}
+						</>
 					</Switch>
 				</Router>
 			</div>
@@ -55,6 +53,7 @@ class Routes extends Component{
 
 
 const renderChildRoute = (item: IFSubMenu) => {
+	console.log(2222)
 	console.log(item.path)
 	// console.log(item.component)
 	return (
@@ -66,6 +65,8 @@ const renderChildRoute = (item: IFSubMenu) => {
 const renderSubRoute = (subItem: IFSubMenu) => {
 	<>
 		{subItem.children!.map((sub: IFSubMenu) => {	
+			console.log(111)
+			console.log(sub)
 			return (
 				renderChildRoute(sub)
 			)
