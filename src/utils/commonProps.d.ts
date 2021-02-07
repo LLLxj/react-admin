@@ -1,7 +1,9 @@
 interface InterFaceResultReturnProps {
-    data: {
-		code: string,
-		desc: string,
-		data: any
+  data: {
+		code: number,
+		msg: string,
+    result: any,
+    totalNum? : number,
+    totalPage? : number
 	}
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Switch } from 'antd'
-import { ReduxProps } from '../../../redux'
+import { ReduxProps } from '@/store'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { sidebarLogoSettingCreator } from '../../../redux/GlobalSetting'
+import { sidebarLogoSettingCreator } from '@/store/GlobalSetting'
 
 interface Props {
 	sidebarLogoShow: boolean,

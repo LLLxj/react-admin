@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import LongLogo from '../../../assets/img/menu.png'
-import ShortLogo from '../../../assets/img/menu_short.png'
+import LongLogo from '@/assets/img/menu.png'
+import ShortLogo from '@/assets/img/menu_short.png'
 import { connect } from 'react-redux'
-import { ReduxProps } from '../../../redux'
+import { ReduxProps } from '@/store'
 import classNames from 'classnames'
 
 const mapStateToProps = (state: ReduxProps) => {

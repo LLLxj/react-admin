@@ -40,6 +40,10 @@ const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || '10000'
 );
 
+const pathResolve = (dir) =>{
+  return path.resolve(__dirname, '..', dir)
+}
+
 // Check if TypeScript is setup
 const useTypeScript = fs.existsSync(paths.appTsConfig);
 
@@ -293,13 +297,13 @@ module.exports = function(webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
+        '@':pathResolve('src'),
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
-        ...(modules.webpackAliases || {}),
-        '@': path.resolve('src')
+        ...(modules.webpackAliases || {})
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding

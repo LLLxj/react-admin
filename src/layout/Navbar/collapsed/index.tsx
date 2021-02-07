@@ -3,8 +3,8 @@ import { Button } from 'antd'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {sidebarCollapseCreator} from '../../../redux/Sidebar'
-import { ReduxProps } from '../../../redux'
+import {sidebarCollapseCreator} from '../../../store/Sidebar'
+import { ReduxProps } from '../../../store'
 
 interface Props {
 	collapse: boolean,

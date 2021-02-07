@@ -5,7 +5,7 @@ import NavBar from './Navbar'
 import SideBar from './Sidebar'
 import Content from './Content'
 import classNames from 'classnames'
-import { ReduxProps } from './../redux'
+import { ReduxProps } from '../store'
 import GlobleSetting from '../components/Setting'
 
 interface Props {
@@ -27,7 +27,6 @@ class LayoutContainer extends Component<Props> {
 				<div className={classNames('app_sidebar', { 'unActive': this.props.collapse })}>
 					<SideBar />
 				</div>
-
 				<div className="app_right">
 					<NavBar />
 					<Content />
@@ -38,4 +37,5 @@ class LayoutContainer extends Component<Props> {
 		)
 	}
 }
+
 export default connect(mapStateToProps)(LayoutContainer)

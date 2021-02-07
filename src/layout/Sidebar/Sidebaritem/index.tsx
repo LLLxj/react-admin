@@ -1,12 +1,12 @@
 import React from 'react'
 import { Menu } from 'antd'
-import MenusList, { IFSubMenu, MenuBase } from '../../../routes/config'
+import MenusList, { IFSubMenu, MenuBase, getRouterList } from '@/router/config'
 import { Link, HashRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { changeRouteCreater } from '../../../redux/Routes'
+import { changeRouteCreater } from '@/store/Routes'
 import { HomeOutlined } from '@ant-design/icons'
-import { ReduxProps } from '../../../redux'
+import { ReduxProps } from '@/store'
 import classNames from 'classnames'
 
 interface Props {
@@ -20,6 +20,7 @@ interface InputItemProps {
 	[index: string]: any
 }
 
+
 class SideBarItem extends React.Component<Props>{
 
 	constructor(props: Props) {
@@ -27,7 +28,6 @@ class SideBarItem extends React.Component<Props>{
 	}
 
 	handleMenuClick = (item: InputItemProps) => {
-		console.log(item)
 		const obj: string[] = item.keyPath
 		this.props.handleChangeRoute(obj)
 	}

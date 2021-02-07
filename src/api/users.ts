@@ -1,20 +1,24 @@
 import request from '../utils/request'
-import LoginProps from '../interfaceProps/system'
 
 const baseUrl = '/apiPro'
 
-class System {
-	static login(data: LoginProps): any {
+interface UserSearchProp {
+  username: string,
+  tel: string
+}
+
+class Users {
+	static list(data: UserSearchProp): any {
 		return request({
-			url: `${baseUrl}/sys/login`,
-			method: 'post',
-			data
+			url: `${baseUrl}/users/list`,
+			method: 'get',
+			params: data 
 		})
 	}
 
 	static info(data: string): any {
 		return request({
-			url: `${baseUrl}/sys/info/` + data,
+			url: `${baseUrl}/user/info/` + data,
 			method: 'get'
 		})
 	}
@@ -27,4 +31,4 @@ class System {
 	//   }
 }
 
-export default System
+export default Users

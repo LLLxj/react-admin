@@ -1,7 +1,7 @@
 import React from 'react'
 import { Breadcrumb } from 'antd'
 import {connect} from 'react-redux'
-import { ReduxProps } from '../../../redux'
+import { ReduxProps } from '@/store'
 
 // const Breadcrumbs = (): JSX.Element => {
 // 	return (

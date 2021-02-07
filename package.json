@@ -10,18 +10,20 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/classnames": "^2.2.9",
-    "@types/http-proxy-middleware": "^0.19.3",
     "@types/jest": "^24.0.0",
     "@types/js-cookie": "^2.2.6",
     "@types/node": "^12.0.0",
+    "@types/nprogress": "^0.2.0",
     "@types/query-string": "^6.3.0",
     "@types/react": "^16.9.0",
     "@types/react-document-title": "^2.0.3",
     "@types/react-dom": "^16.9.0",
+    "@types/react-loadable": "^5.5.3",
     "@types/react-redux": "^7.1.1",
+    "@types/react-router-config": "^5.0.1",
     "@types/react-router-dom": "^5.1.0",
     "@types/redux": "^3.6.0",
-    "antd": "^4.6.4",
+    "antd": "^4.9.4",
     "axios": "^0.21.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "^24.9.0",
@@ -33,13 +35,16 @@
     "classnames": "^2.2.6",
     "css-loader": "3.4.2",
     "dotenv": "8.2.0",
+    "dotenv-cli": "^4.0.0",
     "dotenv-expand": "5.1.0",
     "eslint-config-react-app": "^5.2.1",
     "eslint-loader": "3.0.3",
     "eslint-plugin-flowtype": "4.6.0",
     "eslint-plugin-import": "2.20.1",
     "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "^1.6.1",
+    "eslint-plugin-typescript": "^0.14.0",
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "4.0.0-beta.11",
@@ -52,8 +57,10 @@
     "js-cookie": "^2.2.1",
     "less": "^3.12.2",
     "less-loader": "^7.0.2",
+    "loadable-components": "^2.2.3",
     "mini-css-extract-plugin": "0.9.0",
     "node-sass": "^4.14.1",
+    "nprogress": "^0.2.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "pnp-webpack-plugin": "1.6.4",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -66,6 +73,7 @@
     "react-dev-utils": "^10.2.1",
     "react-document-title": "^2.0.3",
     "react-dom": "^17.0.0",
+    "react-loadable": "^5.5.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.2.0",
     "redux-alita": "^2.3.3",
@@ -87,7 +95,7 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "dotenv -e .env.dev node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "lint": "eslint src test"
@@ -162,11 +170,12 @@
       "react-app"
     ]
   },
+  "homepage": "./",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
     "eslint": "^7.11.0",
-    "eslint-plugin-react": "^7.21.5"
-  },
-  "proxy": "http://mp.flins.com.cn/boss"
+    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-typescript": "^0.14.0"
+  }
 }
