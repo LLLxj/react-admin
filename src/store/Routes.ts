@@ -3,8 +3,6 @@ interface RouteState {
 }
 
 export const changeRouteCreater = (data: string[]): Action => {
-	console.log(111)
-	console.log(data)
 	// export const changeRouteCreater = (): any => {
 	return { type: 'CHANGE_ROUTE', routes: data }
 }

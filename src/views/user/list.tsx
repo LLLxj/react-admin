@@ -67,7 +67,6 @@ class UserList extends React.Component<any, IsState>{
 	}
 
 	getDatalist = ():void => { // 搜索
-		console.log(111)
 		const params = {
 			username: this.state.username,
 			tel: this.state.tel
@@ -87,12 +86,9 @@ class UserList extends React.Component<any, IsState>{
 	}
 
 	handleInputChange = (e: InputItemProps): void => {
-		console.log(e.target.name)
-		console.log(e.target.value)
 		const label = e.target.name
 		const value = e.target.value
 		if (label === 'username') {
-			console.log(111)
 			this.setState({
 				username: value
 			})
@@ -101,7 +97,6 @@ class UserList extends React.Component<any, IsState>{
 				tel: value
 			})
 		}
-		console.log(this.state)
 	}
 
 	resetForm = ():void => { // 重置表单

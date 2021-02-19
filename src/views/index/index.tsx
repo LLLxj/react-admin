@@ -19,6 +19,13 @@ class Index extends React.Component<Props>{
 	constructor(props: Props) {
 		super(props)
 	}
+
+	componentDidMount () {
+		console.log('1----1')
+		console.log(this.props)
+		console.log('1----1')
+		// console.log(this.props)
+	}
 	render (): JSX.Element {
 
 		// if (!this.props.token || this.props.token === '') {

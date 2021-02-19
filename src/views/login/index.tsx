@@ -1,13 +1,13 @@
 import React from 'react'
 import { Form, Input, Button, message } from 'antd'
 import { UserOutlined, KeyOutlined } from '@ant-design/icons'
-import System from '../../api/system'
+import System from '@/api/system'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { userTokenCreator } from '../../store/Users'
-import { ReduxProps } from '../../store'
-// import { Redirect } from 'react-router-dom'
-import Auth from '../../utils/auth'
+import { userTokenCreator } from '@/store/Users'
+import { ReduxProps } from '@/store'
+import Auth from '@/utils/auth'
+import '@/styles/layout/index.less'
 interface Login {
 	username: string,
 	password: string
@@ -61,10 +61,6 @@ class Login extends React.Component<Props>{
 	}
 
 	render (): JSX.Element {
-
-		// if(this.props.token !== ''){
-		// 	return <Redirect to='/' />
-		// }
 
 		return (
 			<div className="login-container">

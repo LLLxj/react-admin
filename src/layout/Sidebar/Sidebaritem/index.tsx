@@ -1,6 +1,6 @@
 import React from 'react'
 import { Menu } from 'antd'
-import MenusList, { IFSubMenu, MenuBase, getRouterList } from '@/router/config'
+import MenusList, { IFSubMenu, MenuBase } from '@/router/config'
 import { Link, HashRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -19,7 +19,6 @@ interface Props {
 interface InputItemProps {
 	[index: string]: any
 }
-
 
 class SideBarItem extends React.Component<Props>{
 
@@ -48,7 +47,7 @@ class SideBarItem extends React.Component<Props>{
 							key = {index}
 						>
 							<>
-								{item.children! ? renderSubMenu(item) : renderMenuItem(item)}
+								{item.routes! ? renderSubMenu(item) : renderMenuItem(item)}
 								{/* {item.children! ? renderMenuItem(item) : renderSubMenu(item)} */}
 							</>
 						</Menu>
@@ -61,13 +60,16 @@ class SideBarItem extends React.Component<Props>{
 }
 
 const renderMenuItem = (menuItem: MenuBase) => {
-	return (
-		<Menu.Item key={menuItem.path} icon={<HomeOutlined />}>
-			<Link to={menuItem.path} replace>
-				{menuItem.title}
-			</Link>
-		</Menu.Item>
-	)
+	if (!menuItem.hidden) {
+		return (
+			<Menu.Item key={menuItem.path} icon={<HomeOutlined />}>
+				<Link to={menuItem.path} replace>
+					{menuItem.title}
+				</Link>
+			</Menu.Item>
+		)
+	}
+	
 }
 
 const renderSubMenu = (subItem: IFSubMenu) => {
@@ -82,7 +84,7 @@ const renderSubMenu = (subItem: IFSubMenu) => {
 					</span>
 				}
 			>
-				{subItem.children!.map((sub: MenuBase) => {
+				{subItem.routes!.map((sub: MenuBase) => {
 					return (
 						renderMenuItem(sub)
 					)

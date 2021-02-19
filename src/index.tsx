@@ -1,16 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AlitaProvider } from 'redux-alita'
-import { HashRouter } from 'react-router-dom'
+// import { AlitaProvider } from 'redux-alita'
+import { Provider } from 'react-redux'
 import './index.css'
-import store from './store'
 import App from './App'
+import store from '@/store'
 import * as serviceWorker from './serviceWorker'
 
+// ReactDOM.render(
+// 	<AlitaProvider>
+// 		<App />
+// 	</AlitaProvider>,
+// 	document.getElementById('root')
+// )
 ReactDOM.render(
-	<AlitaProvider>
+	<Provider store={store}>
 		<App />
-	</AlitaProvider>,
+	</Provider>,
 	document.getElementById('root')
 )
 serviceWorker.unregister()

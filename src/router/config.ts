@@ -1,24 +1,26 @@
 import {
-	HomeOutlined,
-	SettingFilled,
-	SmileOutlined,
+	HomeOutlined
 } from '@ant-design/icons'
+// import {
+// 	HomeOutlined,
+// 	SettingFilled,
+// 	SmileOutlined,
+// } from '@ant-design/icons'
 import Detail from '@/views/detail'
 import Test from '@/views/test'
-import Layout from '@/layout'
-// import loadable from '@loadable/component'
-import { RouteComponentProps } from 'react-router'
 import AsyncComponent from '@/components/AsyncComponent'
+// import LayoutContainer from '@/layout'
 export interface MenuBase {
 	path: string;
 	title: string;
 	icon: any;
-	component?: any
-	// component?: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>
+	component?: any;
+	hidden?: boolean;
 }
 
 export interface IFSubMenu extends MenuBase {
-	children?: IFSubMenu[]
+	routes?: IFSubMenu[];
+	hidden?: boolean
 }
 const DashBoard = AsyncComponent(
 	() => import(/* webpackChunkName:'Home' */ '@/views/dashboard')
@@ -36,73 +38,9 @@ const Login = AsyncComponent(
 	() => import(/* webpackChunkName:'Home' */ '@/views/login')
 )
 
-const constantRoutes = [
-	{
-		path: '',
-		title: '',
-		component: Layout,
-		icon: 'SmileOutlined'
-	},
-	{
-		path: '/login',
-		title: '登录',
-		component: Login,
-		icon: 'SmileOutlined'
-	}
-	// {
-	// '/': {
-	// 	name: 'layout',
-	// 	component: Layout,
-	// },
-	// '/login': {
-	// 	name: '登录',
-	// 	component: Login,
-	// },
-	// '/manage': {
-	// 	name: '管理后台',
-	// 	component: Layout,
-	// },
-]
-
-const asyncRoutesMap: {
-	menus: IFSubMenu[];
-	[index: string]: IFSubMenu[];
-} =	 {
-	menus: [
-		{
-			path: '/user',
-			title: '用户管理',
-			icon: 'SettingFilled',
-			children: [
-				{
-					path: 'list',
-					title: '用户列表',
-					component: UserList,
-					icon: 'SmileOutlined'
-				},
-				{
-					path: 'add',
-					title: '新增用户',
-					component: UserEdit,
-					icon: 'SmileOutlined'
-				}
-			]
-		},
-		{
-			path: '/detail',
-			title: '详情',
-			component: Detail,
-			icon: 'SmileOutlined'
-		},
-		{
-			path: '/test',
-			title: '测试',
-			component: Test,
-			icon: 'SmileOutlined'
-		}
-	]
-}
-
+const Layout = AsyncComponent(
+	() => import(/* webpackChunkName:'Home' */ '@/layout')
+)
 
 const menus: {
 	menus: IFSubMenu[];
@@ -111,16 +49,25 @@ const menus: {
 	menus: [
 		// 菜单相关路由
 		{ 
-			path: '/',
-			title: '首页',
-			component: DashBoard,
-			icon: HomeOutlined
+			path: '/dashboard',
+			title: '',
+			component: Layout,
+			icon: HomeOutlined,
+			routes: [
+				{ 
+					path: '/dashboard',
+					title: '首页',
+					component: DashBoard,
+					icon: HomeOutlined
+				}
+			]
 		},
 		{
 			path: '/user',
 			title: '用户管理',
 			icon: 'SettingFilled',
-			children: [
+			component: Layout,
+			routes: [
 				{
 					path: '/user/list',
 					title: '用户列表',
@@ -138,20 +85,37 @@ const menus: {
 		{
 			path: '/detail',
 			title: '详情',
-			component: Detail,
-			icon: 'SmileOutlined'
+			component: Layout,
+			icon: 'SmileOutlined',
+			routes: [
+				{
+					path: '/detail',
+					title: '详情',
+					component: Detail,
+					icon: 'SmileOutlined'
+				}
+			]
 		},
 		{
 			path: '/test',
 			title: '测试',
-			component: Test,
-			icon: 'SmileOutlined'
+			component: Layout,
+			icon: 'SmileOutlined',
+			routes: [
+				{
+					path: '/test',
+					title: '测试',
+					component: Test,
+					icon: 'SmileOutlined'
+				}
+			]
 		},
 		{
 			path: '/login',
 			title: '登录',
 			component: Login,
-			icon: 'SmileOutlined'
+			icon: 'SmileOutlined',
+			hidden: true
 		}
 	],
 	other: [
@@ -164,12 +128,4 @@ const menus: {
 	]
 }
 
-export const getRouterList = (): any => {
-	return {
-		...constantRoutes,
-		...asyncRoutesMap
-	}
-}
-
-// export { getRouterList }
 export default menus

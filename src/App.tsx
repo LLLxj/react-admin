@@ -1,31 +1,14 @@
 import React from 'react'
-import '@/styles/App.less'
-import { connect } from 'react-redux'
-import { ReduxProps } from './store'
-import Index from '@/views/index'
-interface Props {
-	token: string
-}
-
-class App extends React.Component<Props>{
-	constructor(props: Props) {
-		super(props)
-	}
+import './styles/App.less'
+import Routes from '@/router'
+// import Layout from '@/layout'
+class App extends React.Component{
 
 	render (): JSX.Element {
 		return (
-			<Index />
+			<Routes />
 		)
 	}
 }
-const mapStateToProps = (state: ReduxProps) => {
-	if (!state.Users) {
-		return {
-			token: ''
-		}
-	}
-	return {
-		token: state.Users.token
-	}
-}
-export default connect(mapStateToProps)(App)
+
+export default App
