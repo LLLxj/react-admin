@@ -6,7 +6,6 @@ module.exports = function (app) {
 	app.use(
 		createProxyMiddleware('/apiPro', {
 			target: process.env.BASE_HOST,
-			// target: 'http://mp.flins.com.cn/boss',
 			changeOrigin: true,
 			pathRewrite: {
 				'^/apiPro': ''

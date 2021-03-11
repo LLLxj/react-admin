@@ -34,6 +34,10 @@ const UserEdit = AsyncComponent(
 	() => import(/* webpackChunkName:'Home' */ '@/views/user/edit')
 )
 
+const Table = AsyncComponent(
+	() => import(/* webpackChunkName:'Home' */ '@/views/table/index')
+)
+
 const Login = AsyncComponent(
 	() => import(/* webpackChunkName:'Home' */ '@/views/login')
 )
@@ -111,19 +115,25 @@ const menus: {
 			]
 		},
 		{
+			path: '/table',
+			title: '表格测试',
+			component: Layout,
+			icon: 'SmileOutlined',
+			routes: [
+				{
+					path: '/table',
+					title: '表格测试',
+					component: Table,
+					icon: 'SmileOutlined'
+				}
+			]
+		},
+		{
 			path: '/login',
 			title: '登录',
 			component: Login,
 			icon: 'SmileOutlined',
 			hidden: true
-		}
-	],
-	other: [
-		{
-			path: '/login',
-			title: '登录',
-			component: Login,
-			icon: ''
 		}
 	]
 }

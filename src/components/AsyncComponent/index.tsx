@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import Loadable from 'react-loadable'
-// import { Error } from '@/components'
+import { Error } from '@/components'
 import NProgress from 'nprogress'
 interface defaultPropsInterface {
   loading: any;
@@ -16,11 +16,11 @@ interface propsInterface {
 //     </div>
 // );
 
-const Loading: FC<propsInterface> = props => {
+const Loading: FC<propsInterface> = (props: any) => {
 	NProgress.start()
-	// if (props.error) {
-	// 	return <Error/>
-	// }
+	if (props.error) {
+		return <Error />
+	}
 	return <></>
 }
 const DefaultProps: defaultPropsInterface = {
@@ -28,7 +28,7 @@ const DefaultProps: defaultPropsInterface = {
 	timeout: 20000, // ms
 	delay: 30000, // ms
 }
-const AsyncComponent = (component: any, callback?: () => void) => {
+const AsyncComponent = (component: any, callback?: () => void): any => {
 	return Loadable({
 		...DefaultProps,
 		loader: component,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '@/styles/layout/index.less'
 import {connect} from 'react-redux'
 import { Route, Switch } from 'react-router-dom'

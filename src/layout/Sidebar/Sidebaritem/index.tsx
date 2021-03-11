@@ -8,6 +8,7 @@ import { changeRouteCreater } from '@/store/Routes'
 import { HomeOutlined } from '@ant-design/icons'
 import { ReduxProps } from '@/store'
 import classNames from 'classnames'
+import { hasOneShowingChildren } from '@/router/filter'
 
 interface Props {
 	collapse: boolean,
@@ -20,8 +21,9 @@ interface InputItemProps {
 	[index: string]: any
 }
 
-class SideBarItem extends React.Component<Props>{
+const routes = hasOneShowingChildren(MenusList.menus)
 
+class SideBarItem extends React.Component<Props>{
 	constructor(props: Props) {
 		super(props)
 	}
@@ -31,12 +33,12 @@ class SideBarItem extends React.Component<Props>{
 		this.props.handleChangeRoute(obj)
 	}
 
-	// render (): JSX.Element {
 	render (): JSX.Element {
 		return (
 			<div className={classNames('sidebar_wrap', { 'sidebarLogoShow': !this.props.sidebarLogoShow })}>
 				<HashRouter>
-					{MenusList.menus.map((item: IFSubMenu, index: number) => (
+					{/* {MenusList.menus.map((item: IFSubMenu, index: number) => ( */}
+					{routes.map((item: IFSubMenu, index: number) => (
 						<Menu 
 							defaultSelectedKeys = {['/']}
 							selectedKeys = {this.props.routes}
@@ -47,8 +49,7 @@ class SideBarItem extends React.Component<Props>{
 							key = {index}
 						>
 							<>
-								{item.routes! ? renderSubMenu(item) : renderMenuItem(item)}
-								{/* {item.children! ? renderMenuItem(item) : renderSubMenu(item)} */}
+								{ renderMultiRoute(item) }
 							</>
 						</Menu>
 					))}
@@ -59,17 +60,32 @@ class SideBarItem extends React.Component<Props>{
 
 }
 
-const renderMenuItem = (menuItem: MenuBase) => {
-	if (!menuItem.hidden) {
-		return (
-			<Menu.Item key={menuItem.path} icon={<HomeOutlined />}>
-				<Link to={menuItem.path} replace>
-					{menuItem.title}
-				</Link>
-			</Menu.Item>
-		)
+const renderMultiRoute = (item: IFSubMenu) => { // 渲染多层树形
+	if (item.routes) {
+		return renderSubMenu(item)
+	} else {
+		return renderMenuItem(item)
 	}
-	
+}
+
+const renderRoute = (item: IFSubMenu) => { // 渲染子节点
+	if (item.routes) {
+		return item.routes.map((sub: MenuBase) => {
+			return (
+				renderMenuItem(sub)
+			)
+		})
+	}
+}
+
+const renderMenuItem = (menuItem: MenuBase) => {
+	return (
+		<Menu.Item key={menuItem.path} icon={<HomeOutlined />}>
+			<Link to={menuItem.path} replace>
+				{menuItem.title}
+			</Link>
+		</Menu.Item>
+	)
 }
 
 const renderSubMenu = (subItem: IFSubMenu) => {
@@ -84,11 +100,7 @@ const renderSubMenu = (subItem: IFSubMenu) => {
 					</span>
 				}
 			>
-				{subItem.routes!.map((sub: MenuBase) => {
-					return (
-						renderMenuItem(sub)
-					)
-				})}
+				{ renderRoute(subItem) }
 			</Menu.SubMenu>	
 		</>
 	)
