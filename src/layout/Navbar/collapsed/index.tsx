@@ -1,3 +1,8 @@
+/*
+ * @author: lzj
+ * @Date: 2020-10-21 16:10:48
+ * @LastEditTime: 2021-03-16 15:39:59
+ */
 import React from 'react'
 import { Button } from 'antd'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
@@ -7,8 +12,8 @@ import {sidebarCollapseCreator} from '../../../store/Sidebar'
 import { ReduxProps } from '../../../store'
 
 interface Props {
-	collapse: boolean,
-	handleClickCollapse: () => void
+	collapse: boolean;
+	handleClickCollapse: () => void;
 }
 
 const mapStateToProps = (state: ReduxProps) => {

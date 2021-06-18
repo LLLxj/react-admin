@@ -1,3 +1,8 @@
+/*
+ * @author: lzj
+ * @Date: 2020-10-21 10:30:58
+ * @LastEditTime: 2021-03-16 15:41:03
+ */
 import React from 'react'
 import '@/styles/layout/index.less'
 import {connect} from 'react-redux'
@@ -11,8 +16,8 @@ import GlobleSetting from '../components/Setting'
 import { MenuBase } from '@/router/config'
 
 interface Props {
-	collapse: boolean
-  routes?: MenuBase[]
+	collapse: boolean;
+  routes?: MenuBase[];
 }
 
 const mapStateToProps = (state: ReduxProps) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Input, Button, message } from 'antd'
 import { UserOutlined, KeyOutlined } from '@ant-design/icons'
-import System from '@/api/system'
+import System from '@/api/modules/system'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { userTokenCreator } from '@/store/Users'
@@ -20,8 +20,8 @@ interface InputItemProps {
 	}
 }
 interface Props {
-	token: string,
-	handleUserToken: (value: string) => void
+	token: string;
+	handleUserToken: (value: string) => void;
 }
 class Login extends React.Component<Props>{
 

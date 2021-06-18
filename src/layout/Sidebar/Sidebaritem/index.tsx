@@ -11,10 +11,10 @@ import classNames from 'classnames'
 import { hasOneShowingChildren } from '@/router/filter'
 
 interface Props {
-	collapse: boolean,
-	routes: string[],
-	sidebarLogoShow: boolean,
-	handleChangeRoute: (value: string[]) => void
+	collapse: boolean;
+	routes: string[];
+	sidebarLogoShow: boolean;
+	handleChangeRoute: (value: string[]) => void;
 }
 
 interface InputItemProps {

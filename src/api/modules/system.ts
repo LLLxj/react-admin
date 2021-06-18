@@ -1,5 +1,10 @@
-import request from '../utils/request'
-import LoginProps from '../interfaceProps/system'
+/*
+ * @author: lzj
+ * @Date: 2020-11-16 11:43:37
+ * @LastEditTime: 2021-03-16 14:55:58
+ */
+import request from '../../utils/request'
+import LoginProps from '../../interfaceProps/system'
 
 const baseUrl = '/apiPro'
 
@@ -18,13 +23,6 @@ class System {
 			method: 'get'
 		})
 	}
-
-	//   static logout() {
-	//     return request({
-	//       url: `${baseUrl}/sys/logout`,
-	//       method: 'post'
-	//     })
-	//   }
 }
 
 export default System

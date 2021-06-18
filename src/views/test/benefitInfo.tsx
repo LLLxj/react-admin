@@ -9,11 +9,11 @@ const rangeConfig = {
 	rules: [{ type: 'array' as const, required: true, message: 'Please select time!' }],
 }
 
-interface benefitListProps {
+interface BenefitListProps {
   benefitList: Array<any>;
   productList: Array<any>;
 }
-const benefitList: React.FC<benefitListProps> = (dataInfo): JSX.Element => {
+const benefitList: React.FC<BenefitListProps> = (dataInfo): JSX.Element => {
 	const [form] = Form.useForm()
 	// const [isModalVisible, setIsModalVisible] = useState(false)
 	// const [selectVal, setSelectVal] = useState<number>()
